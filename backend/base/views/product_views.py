@@ -6,9 +6,6 @@ from base.models import Product
 from base.serializers import ProductSerializer
 
 
-from rest_framework import status
-
-
 @api_view(['GET'])
 def getProducts(request):
     products = Product.objects.all()

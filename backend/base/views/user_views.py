@@ -27,10 +27,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+
 @api_view(['POST'])
 def registerUser(request):
     data = request.data
-    try: 
+    try:
         user = User.objects.create(
             first_name=data['name'],
             username=data['email'],
