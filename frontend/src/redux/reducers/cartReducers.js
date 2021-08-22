@@ -1,6 +1,11 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
+import { 
+  CART_ADD_ITEM, 
+  CART_REMOVE_ITEM, 
+  CART_SAVE_SHIPPING_ADDRESS,
+  CART_SAVE_PAYMENT_METHOD
+} from "../constants/cartConstants";
 
-const INITIAL_STATE = { cartItems: [] };
+const INITIAL_STATE = { cartItems: [],  shippingAddress: {}};
 
 export const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -27,7 +32,20 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
           (item) => item.product !== action.payload
         ),
       };
-    default:
+
+    case CART_SAVE_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload
+      };
+
+    case CART_SAVE_PAYMENT_METHOD:
+      return {
+        ...state,
+        paymentMethod: action.payload
+      };
+
+      default:
       return state;
   }
 };
