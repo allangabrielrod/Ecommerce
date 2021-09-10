@@ -5,6 +5,7 @@ import {
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer } from "./reducers/userReducers";
+import { orderCreateReducer } from "./reducers/orderReducers";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -17,7 +18,8 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
-  userUpdateProfile: userUpdateProfileReducer
+  userUpdateProfile: userUpdateProfileReducer,
+  orderCreate: orderCreateReducer
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
@@ -33,9 +35,9 @@ const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
   : {};
 
 const initalState = {
-  cart: { 
-    cartItems: cartItemsFromStorage, 
-    shippingAddress: shippingAddressFromStorage 
+  cart: {
+    cartItems: cartItemsFromStorage,
+    shippingAddress: shippingAddressFromStorage
   },
   userLogin: { userInfo: userInfoFromStorage }
 };
